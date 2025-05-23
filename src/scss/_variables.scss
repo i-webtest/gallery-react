@@ -1,0 +1,29 @@
+$text-grey: #767676;
+
+$font-family: 'Montserrat', sans-serif;
+
+@mixin responsive-font-size($min-size, $max-size, $min-screen, $max-screen) {
+  font-size: clamp(
+    #{$min-size}px,
+    calc(#{$min-size}px + (#{$max-size - $min-size} * ((100vw - #{$min-screen}px) / ($max-screen - $min-screen)))),
+    #{$max-size}px
+  );
+}
+
+@mixin responsive-width($min-width, $max-width, $min-screen, $max-screen) {
+  width: clamp(
+    #{$min-width}px,
+    calc(#{$min-width}px + (#{$max-width - $min-width} * ((100vw - #{$min-screen}px) / ($max-screen - $min-screen)))),
+    #{$max-width}px
+  );
+}
+
+@mixin responsive-height($min-height, $max-height, $min-screen, $max-screen) {
+  height: clamp(
+    #{$min-height}px,
+    calc(
+      #{$min-height}px + (#{$max-height - $min-height} * ((100vw - #{$min-screen}px) / ($max-screen - $min-screen)))
+    ),
+    #{$max-height}px
+  );
+}
