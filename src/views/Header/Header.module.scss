@@ -1,5 +1,21 @@
+@use '@scss/media' as *;
+@use '@scss/variables' as *;
+
 .header {
+  background-color: $background-header;
+  padding: 15px 0;
+
+  @include tablet {
+    padding: 20px 0;
+  }
+
+  @include laptop {
+    padding: 25px 0;
+  }
 }
 
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
