@@ -34,13 +34,6 @@ body {
   }
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #fff;
-}
-
 img,
 svg {
   display: block;
@@ -88,13 +81,3 @@ iframe {
   position: fixed;
   transform: scale(0);
 }
-
-// .container {
-//   max-width: 1340px;
-//   padding: 0 20px;
-//   margin: 0 auto;
-
-//   @include tablet {
-//     padding: 0 30px;
-//   }
-// }

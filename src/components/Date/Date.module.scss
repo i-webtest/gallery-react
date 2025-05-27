@@ -1,0 +1,11 @@
+@use '@scss/media' as *;
+
+.date {
+  font-size: 12px;
+  font-weight: 500;
+
+  @include laptop {
+    color: #fff;
+    padding: 0;
+  }
+}

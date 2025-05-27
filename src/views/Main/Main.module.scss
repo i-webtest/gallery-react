@@ -1,0 +1,25 @@
+@use '@scss/media' as *;
+
+.main {
+  padding-top: 80px;
+
+  @include tablet {
+    padding-top: 100px;
+  }
+
+  @include laptop {
+    padding-top: 120px;
+  }
+}
+
+.container {
+  padding: 0;
+
+  @include tablet {
+    // padding: 0 20px;
+  }
+
+  @include laptop {
+    padding: 0 25px;
+  }
+}

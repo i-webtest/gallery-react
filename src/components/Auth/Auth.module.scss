@@ -1,20 +1,88 @@
 @use '@scss/media' as *;
 @use '@scss/variables' as *;
 
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 5px;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 5px;
+
+  @include tablet {
+    gap: 7px;
+  }
+
+  @include laptop {
+    // width: 35px;
+  }
+}
+
+.img {
+  width: 25px;
+  border-radius: 50%;
+
+  @include tablet {
+    width: 35px;
+  }
+
+  @include laptop {
+    width: 45px;
+  }
+}
+
+.name {
+  font-size: 12px;
+  font-weight: 500;
+
+  @include tablet {
+    font-size: 14px;
+  }
+
+  @include laptop {
+    font-size: 16px;
+  }
+}
+
+.logout {
+  position: absolute;
+  left: -55px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8px;
+  font-weight: 700;
+  color: tomato;
+  text-transform: uppercase;
+  border: 1px solid tomato;
+  border-radius: 2px;
+  padding: 2px 5px;
+
+  @include tablet {
+    left: -65px;
+    font-size: 10px;
+  }
+
+  @include laptop {
+    left: -75px;
+    font-size: 12px;
+
+    &:hover {
+      color: #ffffff;
+      background-color: tomato;
+    }
+  }
+}
+
 .auth {
   @include laptop {
     &:hover {
       scale: 1.1;
     }
-  }
-}
-
-.img {
-  @include tablet {
-    width: 30px;
-  }
-
-  @include laptop {
-    width: 35px;
   }
 }

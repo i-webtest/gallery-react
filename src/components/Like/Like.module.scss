@@ -1,0 +1,52 @@
+@use '@scss/media' as *;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 15px;
+
+  @include tablet {
+    padding: 0 20px;
+  }
+
+  @include laptop {
+    gap: 10px;
+    padding: 0;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d1d1d1;
+  background: linear-gradient(to bottom, transparent 50%, rgba(10, 20, 30, 0.02) 100%), white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  padding: 7px 12px;
+
+  &:hover,
+  &:hover .icon {
+    color: #000;
+    border-color: #000;
+  }
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  color: #767676;
+}
+
+.count {
+  font-weight: 700;
+}
+
+.active {
+  background-color: #f15151;
+
+  &:hover {
+    background-color: #e04c4c;
+  }
+}

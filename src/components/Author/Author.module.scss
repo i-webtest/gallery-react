@@ -1,0 +1,50 @@
+@use '@scss/media' as *;
+
+.author {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'avatar name'
+    'avatar date';
+  gap: 0px 10px;
+  padding: 0 15px;
+
+  @include tablet {
+    padding: 0 20px;
+  }
+
+  @include laptop {
+    padding: 0;
+  }
+}
+
+.avatar {
+  grid-area: avatar;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  @include tablet {
+    width: 45px;
+    height: 45px;
+  }
+
+  @include laptop {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.name {
+  grid-area: name;
+  align-self: end;
+  font-weight: 700;
+
+  @include laptop {
+    color: #fff;
+  }
+}
+
+.date {
+  grid-area: date;
+}
