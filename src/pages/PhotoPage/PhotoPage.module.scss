@@ -1,5 +1,38 @@
 @use '@scss/media' as *;
 
+.photoPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 1000px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+
+  @include laptop {
+    gap: 20px;
+  }
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author {
+  a,
+  time {
+    color: inherit;
+  }
+}
+
 .wrapper {
   display: flex;
   flex-direction: row-reverse;
@@ -49,7 +82,7 @@
 
   @include laptop {
     font-size: 16px;
-    color: #fff;
+    // color: #fff;
   }
 
   @include desktop {
@@ -62,5 +95,31 @@
 
   &:hover {
     background-color: #e04c4c;
+  }
+
+  .icon {
+    color: #fff;
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  color: tomato;
+  // text-transform: uppercase;
+  border: 1px solid tomato;
+  border-radius: 2px;
+  padding: 2px 5px;
+
+  svg {
+    width: 15px;
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+    background-color: tomato;
+    color: #fff;
   }
 }

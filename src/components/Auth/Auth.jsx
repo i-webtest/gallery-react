@@ -2,15 +2,18 @@ import s from './Auth.module.scss';
 import login from '../../assets/login.svg';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../hooks/useAuth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { deleteToken } from '../../store/tokenReducer';
 import { urlAuth } from '../../api/auth';
 import { Preloader } from '../../UI/Preloader/Preloader';
+import { addError, deleteError } from '../../store/errorsReducer';
+import { useNavigate } from 'react-router';
 
 export const Auth = () => {
   const dispatch = useDispatch();
   const [showLogout, setShowLogout] = useState(false);
-  const [auth, loading, clearAuth] = useAuth();
+  const [auth, loading, error, clearAuth] = useAuth();
+  const navigate = useNavigate();
 
   const getOut = () => {
     setShowLogout(!showLogout);
@@ -20,6 +23,21 @@ export const Auth = () => {
     dispatch(deleteToken());
     clearAuth();
   };
+
+  useEffect(() => {
+    if (error) {
+      navigate('/');
+
+      const errorMessage = error.includes('status code 403') ? `Исчерпан лимит` : `Ошибка`;
+
+      dispatch(addError(errorMessage));
+
+      setTimeout(() => {
+        dispatch(deleteError());
+        clearAuth();
+      }, 2000);
+    }
+  }, [error]);
 
   return (
     <div className={s.container}>

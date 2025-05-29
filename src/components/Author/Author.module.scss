@@ -7,19 +7,23 @@
     'avatar name'
     'avatar date';
   gap: 0px 10px;
-  padding: 0 15px;
+  padding-left: 15px;
 
   @include tablet {
-    padding: 0 20px;
+    padding-left: 20px;
   }
 
   @include laptop {
-    padding: 0;
+    padding-left: 0;
   }
 }
 
-.avatar {
+.linkAvatar {
   grid-area: avatar;
+  border-radius: 50%;
+}
+
+.avatar {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -30,18 +34,28 @@
   }
 
   @include laptop {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+  }
+
+  @include desktop {
+    width: 30px;
+    height: 30px;
   }
 }
 
-.name {
+.linkName {
   grid-area: name;
   align-self: end;
   font-weight: 700;
 
   @include laptop {
+    font-size: 14px;
     color: #fff;
+  }
+
+  @include desktop {
+    font-size: 12px;
   }
 }
 

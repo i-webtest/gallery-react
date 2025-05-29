@@ -1,6 +1,9 @@
 @use '@scss/media' as *;
 
 .item {
+  display: block;
+  list-style: none;
+  margin-bottom: 40px;
 }
 
 .card {
@@ -8,11 +11,24 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 
   @include laptop {
-    &:hover::after {
-      content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 10px;
+
+    &::before {
       position: absolute;
+      content: '';
       top: 0;
       left: 0;
       width: 100%;
@@ -20,24 +36,12 @@
       background-color: #000;
       opacity: 0.5;
     }
-
-    &:hover .author {
-      display: grid;
-    }
-
-    &:hover .like {
-      display: flex;
-    }
   }
 }
 
 .author {
   @include laptop {
-    position: absolute;
-    z-index: 1;
-    bottom: 35px;
-    left: 35px;
-    display: none;
+    position: relative;
   }
 }
 
@@ -45,14 +49,11 @@
 }
 
 .img {
+  width: 100%;
 }
 
 .like {
   @include laptop {
-    position: absolute;
-    z-index: 1;
-    top: 35px;
-    right: 35px;
-    display: none;
+    position: relative;
   }
 }

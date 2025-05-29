@@ -4,12 +4,26 @@ import axios from 'axios';
 
 export const photosRequestAsync = createAsyncThunk('photos/fetch', (_, { getState }) => {
   const token = getState().token.token;
+  // const page = getState().photos.page;
+  // const count = getState().photos.count;
+  // const photos = getState().photos.photos;
+
   const { photos, page, count } = getState().photos;
 
-  if (!token) return;
+  // let options = {};
+
+  // if (token) {
+  //   options = {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   };
+  // }
 
   const searchParams = new URLSearchParams('');
-  searchParams.append('client_id', ACCESS_KEY);
+  searchParams.set('client_id', ACCESS_KEY);
+  searchParams.append('per_page', count);
+  searchParams.append('page', page);
 
   if (page && count) {
     searchParams.append('page', page);

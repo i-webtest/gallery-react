@@ -5,7 +5,7 @@ import axios from 'axios';
 export const photoRequestAsync = createAsyncThunk('photo/fetch', (id, { getState }) => {
   const token = getState().token.token;
 
-  if (!token) return;
+  // if (!token) return;
 
   const searchParams = new URLSearchParams('');
   searchParams.append('client_id', ACCESS_KEY);
@@ -18,7 +18,7 @@ export const photoRequestAsync = createAsyncThunk('photo/fetch', (id, { getState
     .then(({ data }) => {
       const isLiked = data.liked_by_user;
       const likes = data.likes;
-      return { data, isLiked, likes };
+      return { data, likes, isLiked };
     })
     .catch((error) => {
       console.error(error);

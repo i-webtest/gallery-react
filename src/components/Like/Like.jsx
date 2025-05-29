@@ -1,9 +1,11 @@
 import s from './Like.module.scss';
 
-export const Like = ({ className }) => {
+export const Like = ({ className, likes, liked }) => {
+  const like = liked ? 'liked' : 'like';
+
   return className ? (
     <div className={`${s.wrapper} ${className}`}>
-      <button className={s.button}>
+      <button className={`${s.button} ${like}`}>
         <svg
           className={s.icon}
           width='24'
@@ -17,11 +19,11 @@ export const Like = ({ className }) => {
         </svg>
       </button>
 
-      <span className={s.count}>12</span>
+      <span className={s.count}>{likes}</span>
     </div>
   ) : (
     <div className={s.wrapper}>
-      <button className={s.button}>
+      <button className={`${s.button} ${like}`}>
         <svg
           className={s.icon}
           width='24'

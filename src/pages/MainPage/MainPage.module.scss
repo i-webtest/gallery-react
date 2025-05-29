@@ -1,0 +1,65 @@
+@use '@scss/media' as *;
+
+.list {
+  // display: -webkit-box;
+  // display: -ms-flexbox;
+  display: grid;
+  // flex-direction: column;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  gap: 30px;
+  column-count: 2;
+
+  @include tablet {
+    gap: 40px;
+  }
+
+  // @include laptop {
+  //   display: grid;
+  //   grid-template-columns: auto auto;
+  //   grid-template-rows: auto auto;
+  //   gap: 20px;
+  // }
+}
+
+// .my-masonry-grid {
+//   display: -webkit-box;
+//   display: -ms-flexbox;
+//   display: flex;
+//   gap: 10px;
+//   width: auto;
+// }
+// .my-masonry-grid_column {
+//   background-clip: padding-box;
+//   column-count: 2;
+// }
+
+// .my-masonry-grid_column > figure {
+//   margin-bottom: 10px;
+// }
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  // margin-left: -30px; /* gutter size offset */
+  width: auto;
+
+  @include laptop {
+    gap: 10px;
+  }
+}
+.my-masonry-grid_column {
+  // padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > figure {
+  /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 40px;
+
+  @include laptop {
+    margin-bottom: 10px;
+  }
+}
