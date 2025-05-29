@@ -4,22 +4,17 @@ import s from './PhotoPage.module.scss';
 import { useNavigate, useParams } from 'react-router';
 import { usePhoto } from '../../hooks/usePhoto';
 import { useEffect, useState } from 'react';
-
 import { Author } from '../../components/Author/Author';
-import { Like } from '../../components/Like/Like';
 import { likeUpdate } from '../../api/like';
 import { photoSlice } from '../../store/photo/photoSlice';
 import { addError, deleteError } from '../../store/errorsReducer';
 import { Preloader } from '../../UI/Preloader/Preloader';
-// import { Photo } from '../../components/Photo/Photo';
 
-export const PhotoPage = ({ photoData }) => {
-  console.log('photoData: ', photoData);
+export const PhotoPage = () => {
   const token = useSelector((state) => state.token.token);
   const { id } = useParams();
   const navigate = useNavigate();
   const [photo, likes, isLiked, status, error] = usePhoto(id);
-  console.log(likes);
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
@@ -29,6 +24,12 @@ export const PhotoPage = ({ photoData }) => {
       const method = isLiked ? 'DELETE' : 'POST';
       likeUpdate(id, token, method);
       dispatch(photoSlice.actions.changeLikes());
+    } else {
+      dispatch(addError('Вы не авторизованы'));
+
+      setTimeout(() => {
+        dispatch(deleteError());
+      }, 2000);
     }
   };
 

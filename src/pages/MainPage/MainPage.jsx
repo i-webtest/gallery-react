@@ -8,10 +8,6 @@ import { photosRequestAsync } from '../../store/photos/photosAction';
 import { addError, deleteError } from '../../store/errorsReducer';
 import { randomId } from '../../utils/randomId';
 import { Preloader } from '../../UI/Preloader/Preloader';
-import Masonry from 'react-masonry-css';
-// import { Outlet } from 'react-router';
-// import Masonry from 'react-masonry-css';
-// import { ResponsiveMasonry } from 'react-responsive-masonry';
 
 export const MainPage = () => {
   const token = useSelector((state) => state.token.token);
@@ -20,8 +16,6 @@ export const MainPage = () => {
   const loading = useSelector((state) => state.photos.loading);
   const error = useSelector((state) => state.photos.error);
   const endList = useRef(null);
-
-  const firstLoading = page === 1 ? loading : false;
 
   const dispatch = useDispatch();
 
@@ -32,7 +26,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     if (error) {
-      const errorMessage = error.includes('status code 403') ? 'Исчерпан лимит' : 'Ошибка загрузки';
+      const errorMessage = error.includes('status code 403') ? 'Лимит исчерпан' : 'Ошибка загрузки';
 
       dispatch(addError(errorMessage));
 
@@ -45,10 +39,6 @@ export const MainPage = () => {
   }, [error]);
 
   useEffect(() => {
-    // if (!photos.length) return;
-
-    // const listEnd = endList.current;
-
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -73,31 +63,24 @@ export const MainPage = () => {
     };
   }, [page]);
 
-  const breakpointColumnsObj = {
-    default: 4,
-    1024: 2,
-    768: 1,
-  };
-
   return (
     <>
-      {firstLoading ? (
-        <Preloader />
-      ) : photos.length > 0 ? (
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className={s['my-masonry-grid']}
-          columnClassName={s['my-masonry-grid_column']}
-        >
-          {photos.map((photo) => (
-            <Photo key={randomId()} photoData={photo} />
-          ))}
-        </Masonry>
-      ) : (
-        <Preloader />
-      )}
+      {page === 1 && loading && <Preloader />}
+      <ul className={s.list}>
+        {!error.includes('403') ? (
+          <>
+            {photos.map((photo) => (
+              <Photo key={randomId()} photoData={photo} />
+            ))}
 
-      {!firstLoading && (loading && !firstLoading ? <Preloader /> : <div className={s.end} ref={endList} />)}
+            {page !== 1 && loading && <Preloader />}
+          </>
+        ) : (
+          <Preloader />
+        )}
+      </ul>
+
+      <div className={s.end} ref={endList} />
     </>
   );
 };

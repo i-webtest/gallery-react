@@ -8,7 +8,6 @@ export const Header = () => {
     <header className={s.header}>
       <Container className={s.container}>
         <Logo />
-
         <Auth />
       </Container>
     </header>

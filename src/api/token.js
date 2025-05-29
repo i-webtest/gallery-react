@@ -18,7 +18,6 @@ export const getToken = () => {
     url.searchParams.append('code', code);
     url.searchParams.append('grant_type', 'authorization_code');
 
-    console.log(url);
     axios
       .post(url)
       .then(({ data }) => {

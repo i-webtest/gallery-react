@@ -4,6 +4,7 @@ import { Main } from './views/Main/Main';
 import { updateToken } from './store/tokenReducer';
 import { getToken } from './api/token';
 import { Route, Routes } from 'react-router';
+import { Modal } from './components/Modal/Modal';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export const App = () => {
           <>
             <Header />
             <Main />
+            <Modal />
           </>
         }
       ></Route>

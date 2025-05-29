@@ -2,23 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ACCESS_KEY, URL_API } from '../../api/const';
 import axios from 'axios';
 
-export const photosRequestAsync = createAsyncThunk('photos/fetch', (_, { getState }) => {
+export const photosRequestAsync = createAsyncThunk('photos/fetch', (_, { getState, rejectWithValue }) => {
   const token = getState().token.token;
-  // const page = getState().photos.page;
-  // const count = getState().photos.count;
-  // const photos = getState().photos.photos;
 
   const { photos, page, count } = getState().photos;
-
-  // let options = {};
-
-  // if (token) {
-  //   options = {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  // }
 
   const searchParams = new URLSearchParams('');
   searchParams.set('client_id', ACCESS_KEY);
@@ -48,8 +35,6 @@ export const photosRequestAsync = createAsyncThunk('photos/fetch', (_, { getStat
     })
     .catch((error) => {
       console.error(error);
-      return {
-        error: error.toString(),
-      };
+      return rejectWithValue(error.message);
     });
 });

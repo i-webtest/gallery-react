@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  max-width: 1000px;
+  height: calc(100vh - 140px);
   padding-bottom: 50px;
   margin: 0 auto;
 }
@@ -14,10 +14,15 @@
   display: flex;
   flex-direction: column-reverse;
   gap: 10px;
+  max-height: 100%;
 
   @include laptop {
     gap: 20px;
   }
+}
+
+.img {
+  height: calc(100% - 50px);
 }
 
 .caption {
@@ -82,7 +87,6 @@
 
   @include laptop {
     font-size: 16px;
-    // color: #fff;
   }
 
   @include desktop {
@@ -108,7 +112,6 @@
   gap: 5px;
   font-weight: 700;
   color: tomato;
-  // text-transform: uppercase;
   border: 1px solid tomato;
   border-radius: 2px;
   padding: 2px 5px;
